@@ -1,0 +1,26 @@
+{
+	"name": "async-iter-read",
+	"version": "1.0.1",
+	"description": "Read from async iterators",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://archive.eldergods.com/async-iter-read"
+	},
+	"keywords": [],
+	"author": "jauntywunderkind",
+	"license": "MIT",
+	"module": "async-iter-fixture.js",
+	"esm": true,
+	"@std/esm": {
+		"cjs": {
+			"namedExports": true
+		}
+	},
+	"devDependencies": {
+		"esm": "^3.2.22"
+	}
+}
