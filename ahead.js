@@ -1,12 +1,27 @@
 "use module"
-export async function readAhead( iter, n){
-	const
-	  reads= [],
-	  push= reads.push.bind( reads)
+function extractValue( o){
+	return o.value
+}
+
+export function readAhead( iter, n){
+	const reads= []
 	while( n-- > 0){
-		iter.next().then( push)
+		let val= iter.next()
+		if( val.then){
+			val= val.then( extractValue)
+		}
+		reads.push( val)
 	}
-	return Promise.all( reads)
+	const all= Promise.all( reads)
+	all.complete= 0
+	all.reads= reads
+	function inc(){
+		++all.complete
+	}
+	for( const read of reads){
+		read.then( inc)
+	}
+	return all
 }
 export {
   readAhead as ReadAhead

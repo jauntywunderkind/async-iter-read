@@ -1,10 +1,10 @@
 {
 	"name": "async-iter-read",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"description": "Read from async iterators",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "node -r esm .test"
 	},
 	"repository": {
 		"type": "git",
@@ -15,12 +15,8 @@
 	"license": "MIT",
 	"module": "async-iter-fixture.js",
 	"esm": true,
-	"@std/esm": {
-		"cjs": {
-			"namedExports": true
-		}
-	},
 	"devDependencies": {
-		"esm": "^3.2.22"
+		"esm": "^3.2.22",
+		"tape": "^4.10.1"
 	}
 }
