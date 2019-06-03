@@ -1,19 +1,21 @@
 "use module"
 
 export function rolling( iter, credit= 8){
-	const reads= []
 	async function readNext( pos= 0){
+		if( all.credit<= 0){
+			return
+		}
+
 		// claim credit
 		--all.credit
 
-		// get next
-		const val= iter.next()
+		// get value
+		let cur= iter.next()
 
-		// start next next?
+		// start next if there's credit
 		let next= all.credit<= 0? null: readNext( pos+ 1)
 
-		// wait for val
-		let cur= val
+		// wait for value to resolve
 		if( cur&& cur.then){
 			cur= await cur
 		}
@@ -21,25 +23,28 @@ export function rolling( iter, credit= 8){
 		// done fetching this, restore credit
 		++all.credit
 
-		// read value
+		// read resolved value
 		if( cur&& cur.done=== false){
-			reads[ pos]= cur.value
+			all.reads[ pos]= cur.value
 			++all.complete
 		// read finish
 		}else if( cur&& cur.done=== true){
 			return next
 		}
-		// get next
+		// read next if credit to read more & not done
 		next= next|| (all.credit<= 0? null: readNext( pos+ 1))
 		return next
 	}
-	const all= Promise
-		.resolve()
+	// we need `all` to be initialized before readNext runs, so create now
+	const all= Promise.resolve()
+		// then iterate until done
 		.then( readNext)
-		.then(()=> Promise.all( reads))
-	all.complete= 0
-	all.reads= reads
-	all.credit= credit
+		// then all is resolved
+		.then(()=> all.reads)
+	all.complete= 0 // completed reads
+	all.credit= credit // instantaneous credits. usually 0 when running, `credits` when done.
+	all.credits= credit // total credits. reference value.
+	all.reads= [] // read in values
 	return all
 }
 export {
