@@ -1,3 +1,3 @@
 "use module"
-export { readAhead, ReadAhead} from "./ahead.js"
+export { fixed, Fixed} from "./fixed.js"
 export { readForAwait, ReadForAwait} from "./for-await.js"

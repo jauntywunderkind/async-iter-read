@@ -3,7 +3,7 @@ function extractValue( o){
 	return o&& o.value!== undefined|| o.done!== undefined? o.value: o
 }
 
-export function readAhead( iter, n){
+export function fixed( iter, n){
 	const reads= []
 	while( n-- > 0){
 		let val= iter.next()
@@ -30,6 +30,6 @@ export function readAhead( iter, n){
 	return all
 }
 export {
-  readAhead as ReadAhead
+  fixed as Fixed
 }
-export default readAhead
+export default fixed

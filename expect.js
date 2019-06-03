@@ -1,6 +1,5 @@
 "use module"
 import forAwait from "./for-await.js"
-import ahead from "./ahead.js"
 
 export function assertEqualOrThrow( a, b, msg){
 	if( a!== b){
