@@ -1,6 +1,6 @@
 "use module"
 function extractValue( o){
-	return o.value
+	return o&& o.value!== undefined|| o.done!== undefined? o.value: o
 }
 
 export function readAhead( iter, n){
@@ -9,6 +9,8 @@ export function readAhead( iter, n){
 		let val= iter.next()
 		if( val.then){
 			val= val.then( extractValue)
+		}else{
+			val= extractValue( val)
 		}
 		reads.push( val)
 	}
@@ -19,7 +21,11 @@ export function readAhead( iter, n){
 		++all.complete
 	}
 	for( const read of reads){
-		read.then( inc)
+		if( read&& read.then){
+			read.then( inc)
+		}else{
+			inc()
+		}
 	}
 	return all
 }
