@@ -17,4 +17,9 @@ export async function expect( iter, expected, assert= assertEqualOrThrow, msg= "
 		assert( found[ i], expected[ i], msg)
 	}
 }
-export default expect
+export {
+  expect as default,
+  expect as Expect,
+  expect as asyncIterReadExcept,
+  expect as AsyncIterReadExcept
+}

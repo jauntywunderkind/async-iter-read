@@ -15,6 +15,10 @@ export function readForAwait( iter, n= Number.POSITIVE_INFINITY){
 	return exec
 }
 export {
-  readForAwait as ReadForAwait
+  forAwait as default,
+  forAwait as ForAwait,
+  forAwait as readForAwait,
+  forAwait as ReadForAwait,
+  forAwait as asyncIterReadForAwait,
+  forAwait as AsyncIterReadForAwait
 }
-export default readForAwait

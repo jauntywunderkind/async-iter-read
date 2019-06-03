@@ -48,6 +48,10 @@ export function rolling( iter, credit= 8){
 	return all
 }
 export {
-  rolling as Rolling
+  rolling as default,
+  rolling as Rolling,
+  rolling as readRolling,
+  rolling as Readrolling,
+  rolling as asyncIterReadRolling,
+  rolling as AsyncIterReadRolling
 }
-export default rolling

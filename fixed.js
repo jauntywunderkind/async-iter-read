@@ -30,6 +30,10 @@ export function fixed( iter, n){
 	return all
 }
 export {
-  fixed as Fixed
+  fixed as Fixed,
+  fixed as readFixed,
+  fixed as ReadFixed,
+  fixed as asyncIterReadForAwait,
+  fixed as AsyncIterReadForAwait
 }
 export default fixed
