@@ -1,4 +1,5 @@
 "use module"
-import {} from "./for-await.js"
 import {} from "./fixed.js"
+import {} from "./for-await.js"
+import {} from "./rolling.js"
 import {} from "./expect.js"
