@@ -1,5 +1,5 @@
 "use module"
-export function readForAwait( iter, n= Number.POSITIVE_INFINITY){
+export function forAwait( iter, n= Number.POSITIVE_INFINITY){
 	const exec= (async function(){
 		for await( const val of iter){
 			exec.reads.push( val)
