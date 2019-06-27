@@ -51,7 +51,7 @@ export {
   rolling as default,
   rolling as Rolling,
   rolling as readRolling,
-  rolling as Readrolling,
+  rolling as ReadRolling,
   rolling as asyncIterReadRolling,
   rolling as AsyncIterReadRolling
 }

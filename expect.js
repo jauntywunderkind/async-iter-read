@@ -20,6 +20,8 @@ export async function expect( iter, expected, assert= assertEqualOrThrow, msg= "
 export {
   expect as default,
   expect as Expect,
-  expect as asyncIterReadExcept,
-  expect as AsyncIterReadExcept
+  expect as readExpect,
+  expect as ReadExpect,
+  expect as asyncIterReadExpect,
+  expect as AsyncIterReadExpect
 }
